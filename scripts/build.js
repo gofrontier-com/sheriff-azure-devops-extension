@@ -12,6 +12,7 @@ const build = async () => {
   const outputsFilePath = process.argv[3];
 
   const isPreRelease = version.endsWith('-pre');
+  const numbersOnlyVersion = version.replace('v', '');
 
   const tempDirPath = await tempdir();
 
@@ -62,7 +63,7 @@ const build = async () => {
   const override = {
     id: isPreRelease ? `${manifestDefinition.id}PreRelease` : manifestDefinition.id,
     name: isPreRelease ? `${manifestDefinition.name} (Pre-Release)` : manifestDefinition.name,
-    version: isPreRelease ? version.split('-')[0] : version,
+    version: isPreRelease ? numbersOnlyVersion.split('-')[0] : numbersOnlyVersion,
   };
 
   const stdout = await exec(
