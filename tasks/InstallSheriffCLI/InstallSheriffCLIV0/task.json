@@ -1,0 +1,31 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Microsoft/azure-pipelines-task-lib/master/tasks.schema.json",
+  "id": "27cd9465-8346-4fe3-8bcf-e7385c8d5b50",
+  "name": "InstallSheriffCLI",
+  "friendlyName": "Install Sheriff CLI",
+  "instanceNameFormat": "Install Sheriff CLI",
+  "description": "Installs the Sheriff CLI",
+  "helpUrl": "https://github.com/frontierdigital/sheriff-azure-devops-extension/tasks/InstallSheriffCLI/README.md",
+  "category": "Utility",
+  "author": "Frontier Digital Ltd",
+  "inputs": [
+    {
+      "name": "version",
+      "type": "string",
+      "label": "Version",
+      "required": true,
+      "helpMarkDown": "The Sheriff CLI version to install"
+    }
+  ],
+  "execution": {
+    "Node16": {
+      "target": "src/index.js",
+      "argumentFormat": ""
+    }
+  },
+  "version": {
+    "Major": 0,
+    "Minor": 0,
+    "Patch": 0
+  }
+}

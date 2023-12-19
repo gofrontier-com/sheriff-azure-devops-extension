@@ -1,0 +1,36 @@
+{
+  "manifestVersion": 1,
+  "id": "Sheriff",
+  "name": "Sheriff",
+  "publisher": "FrontierDigital",
+  "version": "",
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "description": "",
+  "categories": [
+    "Azure Pipelines"
+  ],
+  "icons": {
+    "default": "images/extension-icon.png"
+  },
+  "files": [
+    {
+      "path": "tasks/InstallSheriffCLI"
+    }
+  ],
+  "contributions": [
+    {
+      "id": "install-sheriff-cli",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "tasks/InstallSheriffCLI"
+      }
+    }
+  ]
+}

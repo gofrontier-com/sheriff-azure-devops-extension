@@ -1,0 +1,52 @@
+---
+name: build
+
+on:
+  workflow_call:
+    inputs:
+      version:
+        required: false
+        default: "0.0.0"
+        type: string
+    outputs:
+      is_pre_release:
+        value: ${{ jobs.build.outputs.is_pre_release }}
+      node_version:
+        value: ${{ jobs.build.outputs.node_version }}
+      tfx_cli_version:
+        value: ${{ jobs.build.outputs.tfx_cli_version }}
+      vsix_file_name:
+        value: ${{ jobs.build.outputs.vsix_file_name }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      is_pre_release: ${{ steps.build.outputs.is_pre_release }}
+      node_version: ${{ steps.get_node_version.outputs.node_version }}
+      tfx_cli_version: ${{ steps.get_tfx_cli_version.outputs.tfx_cli_version }}
+      vsix_file_name: ${{ steps.build.outputs.vsix_file_name }}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: .nvmrc
+      - run: npm ci
+      - run: npm test
+      - id: build
+        run: npm run build "${{ inputs.version }}" "$GITHUB_OUTPUT"
+      - uses: actions/upload-artifact@v3
+        with:
+          name: dist
+          path: "${{ github.workspace }}/dist/"
+          if-no-files-found: error
+      - id: get_node_version
+        run: |
+          node_version=$(cat "${GITHUB_WORKSPACE}/.nvmrc")
+          echo "node_version=${node_version}" >> "$GITHUB_OUTPUT"
+      - id: get_tfx_cli_version
+        run: |
+          tfx_cli_version=$(cat "${GITHUB_WORKSPACE}/package.json" | jq -r ".dependencies[\"tfx-cli\"]")
+          echo "tfx_cli_version=${tfx_cli_version}" >> "$GITHUB_OUTPUT"
