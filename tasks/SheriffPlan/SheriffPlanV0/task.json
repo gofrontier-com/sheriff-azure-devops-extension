@@ -10,6 +10,20 @@
   "author": "Frontier Digital Ltd",
   "inputs": [
     {
+      "name": "configDir",
+      "type": "string",
+      "label": "Config directory path",
+      "required": false,
+      "helpMarkDown": "The config directory path"
+    },
+    {
+      "name": "mode",
+      "type": "string",
+      "label": "Mode",
+      "required": true,
+      "helpMarkDown": "The mode to run"
+    },
+    {
       "name": "serviceConnectionName",
       "type": "connectedService:AzureRM",
       "label": "Service connection name",
@@ -18,6 +32,13 @@
       "properties": {
         "EndpointFilterRule": "ScopeLevel != ManagementGroup"
       }
+    },
+    {
+      "name": "subscriptionId",
+      "type": "string",
+      "label": "Subscription ID",
+      "required": false,
+      "helpMarkDown": "The subscription ID"
     }
   ],
   "execution": {
