@@ -52,7 +52,8 @@ async function run() {
       [
         'plan',
         mode,
-        configDir ? `--config-dir ${configDir}` : '',
+        configDir ? '--config-dir' : '',
+        configDir,
         '--subscription-id',
         subscriptionId,
       ],
