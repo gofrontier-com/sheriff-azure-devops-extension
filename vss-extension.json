@@ -21,6 +21,9 @@
       "path": "tasks/InstallSheriffCLI"
     },
     {
+      "path": "tasks/SheriffApply"
+    },
+    {
       "path": "tasks/SheriffPlan"
     }
   ],
@@ -33,6 +36,16 @@
       ],
       "properties": {
         "name": "tasks/InstallSheriffCLI"
+      }
+    },
+    {
+      "id": "sheriff-apply",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "tasks/SheriffApply"
       }
     },
     {

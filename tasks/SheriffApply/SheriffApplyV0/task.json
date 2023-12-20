@@ -1,11 +1,11 @@
 {
   "$schema": "https://raw.githubusercontent.com/Microsoft/azure-pipelines-task-lib/master/tasks.schema.json",
-  "id": "fff0ef38-c5da-423b-91cb-eec8994eb5bb",
-  "name": "SheriffPlan",
-  "friendlyName": "Sheriff plan",
-  "instanceNameFormat": "Sheriff plan",
-  "description": "Runs the plan action on Sheriff",
-  "helpUrl": "https://github.com/frontierdigital/sheriff-azure-devops-extension/tasks/SheriffPlan/SheriffPlanV0/README.md",
+  "id": "55f396f1-459f-4fc0-9f1d-18ffe049260b",
+  "name": "SheriffApply",
+  "friendlyName": "Sheriff apply",
+  "instanceNameFormat": "Sheriff apply",
+  "description": "Runs the apply action on Sheriff",
+  "helpUrl": "https://github.com/frontierdigital/sheriff-azure-devops-extension/tasks/SheriffApply/SheriffApplyV0/README.md",
   "category": "Utility",
   "author": "Frontier Digital Ltd",
   "inputs": [
@@ -22,6 +22,14 @@
       "label": "Mode",
       "required": true,
       "helpMarkDown": "The mode to operate under"
+    },
+    {
+      "name": "planOnly",
+      "type": "boolean",
+      "label": "Plan-only",
+      "required": false,
+      "defaultValue": false,
+      "helpMarkDown": "Run in plan-only action"
     },
     {
       "name": "serviceConnectionName",
