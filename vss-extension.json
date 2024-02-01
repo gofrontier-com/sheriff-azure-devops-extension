@@ -4,6 +4,7 @@
   "name": "Sheriff",
   "publisher": "gofrontier",
   "version": "",
+  "public": false,
   "targets": [
     {
       "id": "Microsoft.VisualStudio.Services"

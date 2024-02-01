@@ -18,7 +18,7 @@ Sheriff Azure DevOps Extension
 About
 -----
 
-This is a Azure DevOps extension that provides tasks for installing and running
+This is an Azure DevOps extension that provides tasks for installing and running
 `Sheriff <https://github.com/gofrontier-com/sheriff>`_, a command line tool to
 manage Azure role-based access control (Azure RBAC) and Microsoft Entra ID
 Privileged Identity Management (Microsoft Entra ID PIM) using desired state configuration.
@@ -27,6 +27,7 @@ Privileged Identity Management (Microsoft Entra ID PIM) using desired state conf
 Installation
 ------------
 
+The extension is available in the `Visual Studio Marketplace <https://marketplace.visualstudio.com/items?itemName=gofrontier.Sheriff>`_.
 
 -----
 Usage
