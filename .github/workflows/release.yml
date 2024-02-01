@@ -1,0 +1,71 @@
+---
+name: Release
+
+on:
+  push:
+    tags:
+      - "*"
+
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.get_version.outputs.version }}
+    steps:
+      - id: get_version
+        run: echo "version=${GITHUB_REF#refs/*/}" >> "$GITHUB_OUTPUT"
+  build:
+    uses: ./.github/workflows/build.yml
+    needs: preflight
+    with:
+      version: ${{ needs.preflight.outputs.version }}
+  release:
+    runs-on: ubuntu-latest
+    needs:
+      - preflight
+      - build
+    steps:
+      - uses: actions/download-artifact@v3
+        id: download
+        with:
+          name: dist
+          path: ${{ github.workspace }}
+      - id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: ${{ github.ref }}
+          draft: true
+          prerelease: ${{ needs.build.outputs.is_pre_release }}
+      - uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: "${{ github.workspace }}/${{ needs.build.outputs.vsix_file_name }}"
+          asset_name: ${{ needs.build.outputs.vsix_file_name }}
+          asset_content_type: application/gzip
+  publish:
+    runs-on: ubuntu-latest
+    needs:
+      - preflight
+      - build
+    environment: visual-studio-marketplace
+    steps:
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ needs.build.outputs.node_version }}
+      - run: npm install -g "tfx-cli@${{ needs.build.outputs.tfx_cli_version }}"
+      - uses: actions/download-artifact@v3
+        id: download
+        with:
+          name: dist
+          path: ${{ github.workspace }}
+      - run: |
+          npx tfx-cli extension publish \
+            --vsix "${GITHUB_WORKSPACE}/${{ needs.build.outputs.vsix_file_name }}" \
+            --service-url https://marketplace.visualstudio.com \
+            --token "${{ secrets.VISUAL_STUDIO_MARKETPLACE_TOKEN }}" \
+            --share-with "${{ secrets.VISUAL_STUDIO_MARKETPLACE_PUBLISHER }}"
