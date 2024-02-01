@@ -4,15 +4,35 @@
   "name": "Sheriff",
   "publisher": "gofrontier",
   "version": "",
+  "public": false,
   "targets": [
     {
       "id": "Microsoft.VisualStudio.Services"
     }
   ],
-  "description": "",
   "categories": [
     "Azure Pipelines"
   ],
+  "description": "Provides tasks to operate Sheriff, a command line tool to manage Microsoft Entra Privileged Identity Management (Microsoft Entra PIM) using desired state configuration.",
+  "tags": [
+    "Microsoft Azure",
+    "Microsoft Entra ID",
+    "Privileged Identity Management"
+  ],
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/gofrontier-com/sheriff-azure-devops-extension"
+  },
+  "content": {
+    "details": {
+      "path": "overview.md"
+    }
+  },
+  "links": {
+    "learn": {
+      "uri": "https://github.com/gofrontier-com/sheriff"
+    }
+  },
   "icons": {
     "default": "images/extension-icon.png"
   },

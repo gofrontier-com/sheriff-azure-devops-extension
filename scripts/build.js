@@ -22,6 +22,7 @@ const build = async () => {
 
   const pathsToCopy = [
     'images',
+    'overview.md',
     'package-lock.json',
     'package.json',
     'tasks',
@@ -64,6 +65,7 @@ const build = async () => {
     id: isPreRelease ? `${manifestDefinition.id}PreRelease` : manifestDefinition.id,
     name: isPreRelease ? `${manifestDefinition.name} (Pre-Release)` : manifestDefinition.name,
     version: isPreRelease ? numbersOnlyVersion.split('-')[0] : numbersOnlyVersion,
+    public: !isPreRelease,
   };
 
   const stdout = await exec(
