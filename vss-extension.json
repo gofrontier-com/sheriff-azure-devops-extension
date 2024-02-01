@@ -16,9 +16,18 @@
     "Microsoft Entra ID",
     "Privileged Identity Management"
   ],
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/gofrontier-com/sheriff-azure-devops-extension"
+  },
   "content": {
     "details": {
       "path": "overview.md"
+    }
+  },
+  "links": {
+    "learn": {
+      "uri": "https://github.com/gofrontier-com/sheriff"
     }
   },
   "icons": {
