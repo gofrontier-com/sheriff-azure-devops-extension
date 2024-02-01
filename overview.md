@@ -4,8 +4,8 @@
 
 This is an Azure DevOps extension that provides tasks for installing and running
 [Sheriff](https://github.com/gofrontier-com/sheriff), a command line tool to
-manage Azure role-based access control (Azure RBAC) and Microsoft Entra ID
-Privileged Identity Management (Microsoft Entra ID PIM) using desired state configuration.
+manage Azure role-based access control (Azure RBAC) and Microsoft Entra
+Privileged Identity Management (Microsoft Entra PIM) using desired state configuration.
 
 ## Usage
 
