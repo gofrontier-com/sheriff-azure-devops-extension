@@ -1,0 +1,37 @@
+{
+  "name": "sheriff-azure-devops-extension",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "node ./scripts/build.js",
+    "install": "run-p install:*",
+    "install:tasks": "find ./tasks -type d -regex \".*V[0-9]\" -maxdepth 2 -exec npm --prefix {} install \\;",
+    "test": "run-p test:*",
+    "test:js": "eslint .",
+    "test:tasks": "find ./tasks -type d -regex \".*V[0-9]\" -maxdepth 2 -exec npm --prefix {} test \\;"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:gofrontier-com/sheriff-azure-devops-extension.git"
+  },
+  "author": "Frontier Digital Ltd",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/gofrontier-com/sheriff-azure-devops-extension/issues"
+  },
+  "homepage": "https://github.com/gofrontier-com/sheriff-azure-devops-extension#readme",
+  "dependencies": {
+    "fs-extra": "^11.1.1",
+    "rimraf": "^5.0.1",
+    "shelljs": "^0.8.5",
+    "tempdir": "^2.0.0",
+    "tfx-cli": "^0.15.0",
+    "winston": "^3.10.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.44.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "npm-run-all": "^4.1.5"
+  }
+}

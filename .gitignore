@@ -1,0 +1,12 @@
+# ide
+.env
+.vscode
+
+# node
+node_modules
+
+# other
+.taskkey
+dist/
+test-results.xml
+*.vsix

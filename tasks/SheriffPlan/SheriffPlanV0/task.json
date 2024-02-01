@@ -1,0 +1,55 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Microsoft/azure-pipelines-task-lib/master/tasks.schema.json",
+  "id": "fff0ef38-c5da-423b-91cb-eec8994eb5bb",
+  "name": "SheriffPlan",
+  "friendlyName": "Sheriff plan",
+  "instanceNameFormat": "Sheriff plan",
+  "description": "Runs the plan action on Sheriff",
+  "helpUrl": "https://github.com/gofrontier-com/sheriff-azure-devops-extension/tasks/SheriffPlan/SheriffPlanV0/README.md",
+  "category": "Utility",
+  "author": "Frontier Digital Ltd",
+  "inputs": [
+    {
+      "name": "configDir",
+      "type": "string",
+      "label": "Config directory path",
+      "required": false,
+      "helpMarkDown": "The config directory path"
+    },
+    {
+      "name": "mode",
+      "type": "string",
+      "label": "Mode",
+      "required": true,
+      "helpMarkDown": "The mode to operate under"
+    },
+    {
+      "name": "serviceConnectionName",
+      "type": "connectedService:AzureRM",
+      "label": "Service connection name",
+      "required": true,
+      "helpMarkDown": "The Azure Resource Manager service connection to use",
+      "properties": {
+        "EndpointFilterRule": "ScopeLevel != ManagementGroup"
+      }
+    },
+    {
+      "name": "subscriptionId",
+      "type": "string",
+      "label": "Subscription ID",
+      "required": false,
+      "helpMarkDown": "The subscription ID"
+    }
+  ],
+  "execution": {
+    "Node16": {
+      "target": "src/index.js",
+      "argumentFormat": ""
+    }
+  },
+  "version": {
+    "Major": 0,
+    "Minor": 0,
+    "Patch": 0
+  }
+}
