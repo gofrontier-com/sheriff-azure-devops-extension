@@ -13,8 +13,8 @@
       "name": "version",
       "type": "string",
       "label": "Version",
-      "defaultValue": "latest",
       "required": false,
+      "defaultValue": "latest",
       "helpMarkDown": "The Sheriff CLI version to install"
     }
   ],
