@@ -10,8 +10,11 @@
       "id": "Microsoft.VisualStudio.Services"
     }
   ],
-  "description": "",
   "categories": [
+    "Azure Pipelines"
+  ],
+  "description": "",
+  "tags": [
     "Azure RBAC",
     "Microsoft Entra ID",
     "Privileged Identity Management"
