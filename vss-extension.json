@@ -13,7 +13,7 @@
   "categories": [
     "Azure Pipelines"
   ],
-  "description": "Provides tasks to operate Sheriff, a command line tool to manage Azure role-based access control (Azure RBAC) and Microsoft Entra Privileged Identity Management (Microsoft Entra PIM) using desired state configuration.",
+  "description": "Provides tasks to operate Sheriff, a command line tool to manage Microsoft Entra Privileged Identity Management (Microsoft Entra PIM) using desired state configuration.",
   "tags": [
     "Microsoft Azure",
     "Microsoft Entra ID",
