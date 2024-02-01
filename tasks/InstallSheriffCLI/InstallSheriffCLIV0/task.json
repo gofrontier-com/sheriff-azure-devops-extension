@@ -5,7 +5,7 @@
   "friendlyName": "Install Sheriff CLI",
   "instanceNameFormat": "Install Sheriff CLI",
   "description": "Installs the Sheriff CLI",
-  "helpUrl": "https://github.com/frontierdigital/sheriff-azure-devops-extension/tasks//InstallSheriffCLIV0/README.md",
+  "helpUrl": "https://github.com/gofrontier-com/sheriff-azure-devops-extension/tasks//InstallSheriffCLIV0/README.md",
   "category": "Utility",
   "author": "Frontier Digital Ltd",
   "inputs": [
@@ -13,7 +13,8 @@
       "name": "version",
       "type": "string",
       "label": "Version",
-      "required": true,
+      "required": false,
+      "defaultValue": "latest",
       "helpMarkDown": "The Sheriff CLI version to install"
     }
   ],
