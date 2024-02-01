@@ -5,7 +5,7 @@
   "friendlyName": "Sheriff plan",
   "instanceNameFormat": "Sheriff plan",
   "description": "Runs the plan action on Sheriff",
-  "helpUrl": "https://github.com/frontierdigital/sheriff-azure-devops-extension/tasks/SheriffPlan/SheriffPlanV0/README.md",
+  "helpUrl": "https://github.com/gofrontier-com/sheriff-azure-devops-extension/tasks/SheriffPlan/SheriffPlanV0/README.md",
   "category": "Utility",
   "author": "Frontier Digital Ltd",
   "inputs": [
