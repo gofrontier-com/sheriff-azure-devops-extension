@@ -34,7 +34,8 @@
     }
   },
   "icons": {
-    "default": "images/extension-icon.png"
+    "default": "images/extension-icon.png",
+    "large": "images/large-extension-icon.png"
   },
   "files": [
     {
