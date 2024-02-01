@@ -12,8 +12,15 @@
   ],
   "description": "",
   "categories": [
-    "Azure Pipelines"
+    "Azure RBAC",
+    "Microsoft Entra ID",
+    "Privileged Identity Management"
   ],
+  "content": {
+    "details": {
+      "path": "overview.md"
+    }
+  },
   "icons": {
     "default": "images/extension-icon.png"
   },
