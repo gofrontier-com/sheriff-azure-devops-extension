@@ -67,5 +67,4 @@ jobs:
           npx tfx-cli extension publish \
             --vsix "${GITHUB_WORKSPACE}/${{ needs.build.outputs.vsix_file_name }}" \
             --service-url https://marketplace.visualstudio.com \
-            --token "${{ secrets.VISUAL_STUDIO_MARKETPLACE_TOKEN }}" \
-            --share-with "${{ secrets.VISUAL_STUDIO_MARKETPLACE_PUBLISHER }}"
+            --token "${{ secrets.VISUAL_STUDIO_MARKETPLACE_TOKEN }}"
