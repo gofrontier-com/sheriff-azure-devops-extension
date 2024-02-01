@@ -13,7 +13,7 @@
   "categories": [
     "Azure Pipelines"
   ],
-  "description": "An Azure DevOps extension to simplify use of Sheriff, a command line tool to manage Azure role-based access control (Azure RBAC) and Microsoft Entra ID Privileged Identity Management (Microsoft Entra ID PIM) using desired state configuration.",
+  "description": "Provides tasks to operate Sheriff, a command line tool to manage Azure role-based access control (Azure RBAC) and Microsoft Entra ID Privileged Identity Management (Microsoft Entra ID PIM) using desired state configuration.",
   "tags": [
     "Azure RBAC",
     "Microsoft Entra ID",
