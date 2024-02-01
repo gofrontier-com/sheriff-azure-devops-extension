@@ -27,9 +27,9 @@ async function run() {
 
     let downloadUrl;
     if (version === 'latest') {
-      downloadUrl = `https://github.com/frontierdigital/sheriff/releases/latest/download/sheriff_${agentOS}_${platform}.tar.gz`;
+      downloadUrl = `https://github.com/gofrontier-com/sheriff/releases/latest/download/sheriff_${agentOS}_${platform}.tar.gz`;
     } else {
-      downloadUrl = `https://github.com/frontierdigital/sheriff/releases/download/${version}/sheriff_${agentOS}_${platform}.tar.gz`;
+      downloadUrl = `https://github.com/gofrontier-com/sheriff/releases/download/${version}/sheriff_${agentOS}_${platform}.tar.gz`;
     }
     const downloadPath = path.join(agentTempDirectory, `sheriff_${agentOS}_${platform}.tar.gz`);
     const toolDirPath = `${agentToolsDirectory}/sheriff/${version}/${platform}`;
