@@ -2,7 +2,7 @@
 
 ## 0.0.4
 
-* Updated `InstallSheriffCLI` task to bug fix HTTP 404 when running on Windows agents.
+* `InstallSheriffCLI` task updated to bug fix HTTP 404 when running on Windows agents.
 
 ## 0.0.3
 
