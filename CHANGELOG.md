@@ -1,7 +1,13 @@
 # Sheriff Azure DevOps Extension Changelog
 
-## 1.0.1
+## 0.0.4
 
-### Bug fixes
+* Updated `InstallSheriffCLI` task to bug fix HTTP 404 when running on Windows agents.
 
-* `InstallSheriffCLI` now downloads correct on Windows agents.
+## 0.0.3
+
+* Logo files updated.
+
+## 0.0.2
+
+* Extension made public.
