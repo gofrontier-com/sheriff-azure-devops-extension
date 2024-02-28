@@ -18,6 +18,13 @@ async function run() {
     const agentTempDirectory = tl.getVariable('Agent.TempDirectory');
     const agentToolsDirectory = tl.getVariable('Agent.ToolsDirectory');
 
+    let os;
+    if (agentOS === 'Windows_NT') {
+      os = 'Windows';
+    } else {
+      os = agentOS;
+    }
+
     let platform;
     if (agentOSArchitecture === 'X64' || agentOSArchitecture === 'X86') {
       platform = 'x86_64';
@@ -25,13 +32,20 @@ async function run() {
       platform = agentOSArchitecture;
     }
 
+    let fileExtension;
+    if (os === 'Windows') {
+      fileExtension = 'zip';
+    } else {
+      fileExtension = 'tar.gz';
+    }
+
     let downloadUrl;
     if (version === 'latest') {
-      downloadUrl = `https://github.com/gofrontier-com/sheriff/releases/latest/download/sheriff_${agentOS}_${platform}.tar.gz`;
+      downloadUrl = `https://github.com/gofrontier-com/sheriff/releases/latest/download/sheriff_${os}_${platform}.${fileExtension}`;
     } else {
-      downloadUrl = `https://github.com/gofrontier-com/sheriff/releases/download/${version}/sheriff_${agentOS}_${platform}.tar.gz`;
+      downloadUrl = `https://github.com/gofrontier-com/sheriff/releases/download/${version}/sheriff_${os}_${platform}.${fileExtension}`;
     }
-    const downloadPath = path.join(agentTempDirectory, `sheriff_${agentOS}_${platform}.tar.gz`);
+    const downloadPath = path.join(agentTempDirectory, `sheriff_${os}_${platform}.${fileExtension}`);
     const toolDirPath = `${agentToolsDirectory}/sheriff/${version}/${platform}`;
 
     tl.debug(`Download URL: ${downloadUrl}`);
