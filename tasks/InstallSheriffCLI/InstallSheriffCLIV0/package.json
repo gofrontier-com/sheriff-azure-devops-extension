@@ -1,6 +1,6 @@
 {
   "name": "install-sheriff-cli-task",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "scripts": {
     "test": "run-p test:*",
