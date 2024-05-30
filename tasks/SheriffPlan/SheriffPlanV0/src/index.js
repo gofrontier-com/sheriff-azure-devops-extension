@@ -3,7 +3,28 @@
 const fs = require('fs');
 const path = require('path');
 
+const { getHandlerFromToken, WebApi } = require('azure-devops-node-api');
 const tl = require('azure-pipelines-task-lib/task');
+const { getSystemAccessToken } = require('azure-pipelines-tasks-artifacts-common/webapi');
+
+async function getIdToken(connectedService) {
+  const jobId = tl.getVariable('System.JobId');
+  const planId = tl.getVariable('System.PlanId');
+  const projectId = tl.getVariable('System.TeamProjectId');
+  const hub = tl.getVariable('System.HostType');
+  const uri = tl.getVariable('System.CollectionUri');
+  const token = getSystemAccessToken();
+
+  const authHandler = getHandlerFromToken(token);
+  const connection = new WebApi(uri, authHandler);
+  const api = await connection.getTaskApi();
+  const response = await api.createOidcToken({}, projectId, hub, planId, jobId, connectedService);
+  if (response == null) {
+    return null;
+  }
+
+  return response.oidcToken;
+}
 
 async function run() {
   try {
@@ -32,7 +53,7 @@ async function run() {
       const tenantId = tl.getEndpointAuthorizationParameter(connectedService, 'tenantid', false);
       env.AZURE_TENANT_ID = tenantId;
 
-      const federatedToken = await this.getIdToken(connectedService);
+      const federatedToken = await getIdToken(connectedService);
       tl.setSecret(federatedToken);
 
       const federatedTokenFilePath = path.join(agentTempDirectory, 'azure-identity-token');
