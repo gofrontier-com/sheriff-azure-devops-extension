@@ -1,5 +1,8 @@
 #!/usr/bin/env node
 
+const fs = require('fs');
+const path = require('path');
+
 const tl = require('azure-pipelines-task-lib/task');
 
 async function run() {
@@ -10,6 +13,8 @@ async function run() {
     const planOnly = (tl.getInput('planOnly', false) === 'true');
 
     let subscriptionId = tl.getInput('subscriptionId', false);
+
+    const agentTempDirectory = tl.getVariable('Agent.TempDirectory');
 
     const env = {};
 
@@ -22,7 +27,18 @@ async function run() {
 
     if (authScheme.toLowerCase() === 'workloadidentityfederation') {
       tl.debug('workload identity federation scheme');
-      throw new Error('Workload identity federation scheme not implemented');
+      const servicePrincipalId = tl.getEndpointAuthorizationParameter(connectedService, 'serviceprincipalid', false);
+      env.AZURE_CLIENT_ID = servicePrincipalId;
+
+      const tenantId = tl.getEndpointAuthorizationParameter(connectedService, 'tenantid', false);
+      env.AZURE_TENANT_ID = tenantId;
+
+      const federatedToken = await this.getIdToken(connectedService);
+      tl.setSecret(federatedToken);
+
+      const federatedTokenFilePath = path.join(agentTempDirectory, 'azure-identity-token');
+      fs.writeFileSync(federatedTokenFilePath, federatedToken);
+      env.AZURE_FEDERATED_TOKEN_FILE = federatedTokenFilePath;
     } else if (authScheme.toLowerCase() === 'serviceprincipal') {
       tl.debug('service principal scheme');
       const authType = tl.getEndpointAuthorizationParameter(connectedService, 'authenticationType', false);
